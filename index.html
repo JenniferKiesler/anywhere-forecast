@@ -13,45 +13,32 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <main class="container"> <!--change margin-left 30px!-->
-        <div class="row justify-content-between"">
-            
-            <div class="col-2">
-                <form>
-                    <h2>Search for a City:</h2>
-                    <input type="search" class="form-control" id="search-input">
-                    <button type="submit" class="btn btn-primary col-12">Search</button>
-                </form>
-                <hr/>
-                <ul class="list-group"></ul>
-            </div>
+    <main class="container-fluid row">
+        
+        <div class="col-2">
+            <form>
+                <h2>Search for a City:</h2>
+                <input type="search" class="form-control" id="search-input">
+                <button type="submit" class="btn btn-info col-12">Search</button>
+            </form>
+            <hr/>
+            <ul class="list-group"></ul>
+        </div>
 
-            <div class="col-10">
-                <div class="row">
-                    <div id="current-info" class="card "> <!--set margin-left: 7px?-->
-                        1 of 5
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <h3>5-Day Forecast:</h3>
-                    <div id="day-1" class="card col-2 day">
-                        1 of 5
-                    </div>
-                    <div id="day-2" class="card col-2 day">
-                        2 of 5
-                    </div>
-                    <div id="day-3" class="card col-2 day">
-                        3 of 5
-                    </div>
-                    <div id="day-4" class="card col-2 day">
-                        4 of 5
-                    </div>
-                    <div id="day-5" class="card col-2 day">
-                        5 of 5
-                    </div>
-                </div>
+        <div class="col-10">
+            <div class="row">
+                <div id="current-info" class="card "></div>
+            </div>
+            <div class="row justify-content-between">
+                <h3>5-Day Forecast:</h3>
+                <div id="day-1" class="card col-2 day"></div>
+                <div id="day-2" class="card col-2 day"></div>
+                <div id="day-3" class="card col-2 day"></div>
+                <div id="day-4" class="card col-2 day"></div>
+                <div id="day-5" class="card col-2 day"></div>
             </div>
         </div>
+        
     </main>
     
     
