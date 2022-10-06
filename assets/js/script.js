@@ -24,20 +24,34 @@ function getCurrentWeather(city) {
         .then(function(cityName) {
             console.log(cityName);
             var today = moment().format('l');
-            var icon = 'http://openweathermap.org/img/wn/' + cityName.weather[0].icon + '@2x.png';
+            var icon = 'http://openweathermap.org/img/wn/' + cityName.weather[0].icon + '.png';
             var temp = cityName.main.temp
             var wind = cityName.wind.speed
             var humidity = cityName.main.humidity
-            console.log(humidity)
+
             // create elements (h2, icon, 3 p)
             var h2 = document.createElement('h2');
-            var icon = document.createElement('img');
+            var img = document.createElement('img');
             var tempP = document.createElement('p');
             var windP = document.createElement('p');
             var humidityP = document.createElement('p');
             // modify elements
-            
+            img.setAttribute('src', icon);
+            img.setAttribute('alt', cityName.weather[0].description)
+            h2.textContent = city + ' (' + today + ') ';
+            tempP.textContent = 'Temp: ' + temp + '°F';
+            windP.textContent = 'Wind: ' + wind + ' mph';
+            humidityP.textContent = 'Humidity: ' + humidity + ' %';
+            humidityP.setAttribute('style', 'padding-bottom: 10px')
+
             // append elements
+            currentInfo.appendChild(h2);
+            currentInfo.appendChild(tempP);
+            currentInfo.appendChild(windP);
+            currentInfo.appendChild(humidityP);
+            h2.appendChild(img);
+
+
             // call save to local storage function
             // for loop for array of cities searched
                 // create button

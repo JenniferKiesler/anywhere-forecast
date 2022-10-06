@@ -28,6 +28,14 @@ h2 {
 
 #current-info {
     margin-left: 3px;
+    line-height: 2.5;
+}
+
+#current-info h2 {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0px;
+    margin-bottom: -10px;
 }
 
 h3 {
