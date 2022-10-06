@@ -17,25 +17,31 @@ var cities = []
 
 // function to fetch data for current weather
 function getCurrentWeather(city) {
-    // http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-        // get city name / date
-        // get icon
-        // get temp, wind, and humidity
-        // create elements (h2, icon, 3 p)
-        // modify elements
-        // append elements
-        // call save to local storage function
-        // for loop for array of cities searched
-            // create button
-            // modify button
-            // append button
+    fetch("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(cityName) {
+            console.log(cityName);
+            // get city name / moment(date)
+            // get icon
+            // get temp, wind, and humidity
+            // create elements (h2, icon, 3 p)
+            // modify elements
+            // append elements
+            // call save to local storage function
+            // for loop for array of cities searched
+                // create button
+                // modify button
+                // append button
+        })
 
 }
 
 // function to fetch data for 5 day forecast
 function getForecast(city) {
-    // http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
-        // get date
+    // http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
+        // moment(date)
         // get icon
         // get temp, wind, and humidity
         // create elements (h2, icon, 3 p)
@@ -52,11 +58,9 @@ function submitForm(event) {
     getForecast(city);
     cityInput.value = "";
 }
-    // prevent default
-    // modify var city to input.value
-    // call fetch functions with var city
 
 // submit listener for form
 form.addEventListener('submit', submitForm)
+
 // click listener for search history cities
     // use text content in <button> to create var that will be used to fetch the data above
