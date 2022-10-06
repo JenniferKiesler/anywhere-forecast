@@ -26,6 +26,13 @@ h2 {
     font-weight: bold;
 }
 
+.list-group-item {
+    background: rgb(192, 191, 191);
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
 #current-info {
     margin-left: 3px;
     line-height: 2.5;

@@ -9,11 +9,39 @@ var APIKey = '0478340e8da740af37394adbeb28c325'
 var city
 var cities = []
 
-// function save to local storage
-    // save city name into blank array
+// save city name to local storage
+function saveSearch() {
+    // find way to not allow repeat words in cities[]
+    cities.push(city)
+    localStorage.setItem('cities', JSON.stringify(cities))
+    console.log(cities)
+}
 
-// function to get city name out of local storage
-    // call fetch functions?
+// get city name out of local storage
+function getSearchHistory() {
+    var cityHistory = JSON.parse(localStorage.getItem('cities'));
+    console.log(cityHistory)
+    
+    if (cityHistory !== null) {
+        cities = cityHistory;
+    }
+}
+
+// render cities searched into search history list
+function renderHistory() {
+    ul.innerHTML = ""
+
+    for (var i = 0; i < cities.length; i++) {
+        var searchedCity = cities[i];
+
+        var li = document.createElement('li');
+        li.classList.add('list-group-item');
+        li.textContent = searchedCity;
+
+        ul.appendChild(li);
+    }
+    // click event listener for li items
+}
 
 // function to fetch data for current weather
 function getCurrentWeather(city) {
@@ -51,12 +79,9 @@ function getCurrentWeather(city) {
             currentInfo.appendChild(humidityP);
             h2.appendChild(img);
 
-
-            // call save to local storage function
-            // for loop for array of cities searched
-                // create button
-                // modify button
-                // append button
+            saveSearch()
+            getSearchHistory()
+            renderHistory()
         })
 
 }
@@ -76,6 +101,11 @@ function getForecast(city) {
 // function for submit form
 function submitForm(event) {
     event.preventDefault();
+   
+    while (currentInfo.hasChildNodes()) {
+        currentInfo.removeChild(currentInfo.firstChild);
+    }
+
     city = cityInput.value;
     getCurrentWeather(city);
     getForecast(city);
@@ -87,3 +117,5 @@ form.addEventListener('submit', submitForm)
 
 // click listener for search history cities
     // use text content in <button> to create var that will be used to fetch the data above
+
+getSearchHistory()
