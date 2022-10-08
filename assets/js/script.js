@@ -40,7 +40,6 @@ function renderHistory() {
 
         ul.appendChild(li);
     }
-    // click event listener for li items
 }
 
 // function to fetch data for current weather
@@ -115,7 +114,24 @@ function submitForm(event) {
 // submit listener for form
 form.addEventListener('submit', submitForm)
 
+ul.addEventListener('click', function(event) {
+    event.preventDefault();
+   
+    while (currentInfo.hasChildNodes()) {
+        currentInfo.removeChild(currentInfo.firstChild);
+    }
+    
+    var element = event.target 
+
+    if (element.matches('li')) {
+        city = element.innerHTML
+        getCurrentWeather(city);
+        getForecast(city);
+    }
+})
+
 // click listener for search history cities
     // use text content in <button> to create var that will be used to fetch the data above
 
 getSearchHistory()
+renderHistory()
