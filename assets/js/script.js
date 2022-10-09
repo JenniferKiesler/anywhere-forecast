@@ -102,10 +102,8 @@ function getForecast(city) {
             }
 
             for (var i = 0; i < fiveDays.length; i++) {
-                console.log(fiveDays[i].dt);
                 var forecastDate = moment(fiveDays[i].dt, 'X').format('l');
                 var forecastIcon = 'http://openweathermap.org/img/wn/' + fiveDays[i].weather[0].icon + '.png';
-                console.log(forecastIcon);
                 var forecastTemp = fiveDays[i].main.temp
                 var forecastWind = fiveDays[i].wind.speed;
                 var forecastHumidity = fiveDays[i].main.humidity;
@@ -125,7 +123,6 @@ function getForecast(city) {
                 forecastWindP.textContent = 'Wind: ' + forecastWind + ' mph';
                 forecastHumidityP.textContent = 'Humidity: ' + forecastHumidity + ' %';
 
-                
                 // append elements
                 days[i].appendChild(forecastDateP);
                 days[i].appendChild(forecastImg);
@@ -144,6 +141,14 @@ function submitForm(event) {
    
     while (currentInfo.hasChildNodes()) {
         currentInfo.removeChild(currentInfo.firstChild);
+    }
+    
+    fiveDays = [];
+
+    for (var i = 0; i < days.length; i++) {
+        while (days[i].hasChildNodes()) {
+            days[i].removeChild(days[i].firstChild);
+        }
     }
 
     var value = cityInput.value
@@ -168,6 +173,14 @@ ul.addEventListener('click', function(event) {
    
     while (currentInfo.hasChildNodes()) {
         currentInfo.removeChild(currentInfo.firstChild);
+    }
+    
+    fiveDays = [];
+    
+    for (var i = 0; i < days.length; i++) {
+        while (days[i].hasChildNodes()) {
+            days[i].removeChild(days[i].firstChild);
+        }
     }
     
     var element = event.target 

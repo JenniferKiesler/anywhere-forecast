@@ -31,6 +31,12 @@ h2 {
     text-align: center;
     margin-bottom: 10px;
     border-radius: 5px;
+   overflow-wrap: break-word;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+    background: #1CCAD8;
 }
 
 #current-info {
