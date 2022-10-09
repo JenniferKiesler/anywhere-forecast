@@ -58,3 +58,8 @@ h3 {
     margin-left: 7px;
 }
 
+.day img {
+    height: auto;
+    max-width: 40%;
+}
+

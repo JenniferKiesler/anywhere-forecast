@@ -8,6 +8,7 @@ var days = document.querySelectorAll('.day');
 var APIKey = '0478340e8da740af37394adbeb28c325'
 var city
 var cities = []
+var fiveDays = []
 
 // save city name to local storage
 function saveSearch() {
@@ -63,6 +64,7 @@ function getCurrentWeather(city) {
             var tempP = document.createElement('p');
             var windP = document.createElement('p');
             var humidityP = document.createElement('p');
+
             // modify elements
             img.setAttribute('src', icon);
             img.setAttribute('alt', cityName.weather[0].description)
@@ -88,13 +90,45 @@ function getCurrentWeather(city) {
 
 // function to fetch data for 5 day forecast
 function getForecast(city) {
-    // http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
-        // moment(date)
-        // get icon
-        // get temp, wind, and humidity
-        // create elements (h2, icon, 3 p)
-        // modify elements
-        // append elements
+    fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(cityName) {
+            console.log(cityName);
+            for (var i = 6; i < cityName.list.length; i = i + 8) {
+                fiveDays.push(cityName.list[i]);
+                console.log(fiveDays)   
+            }
+
+            for (var i = 0; i < fiveDays.length; i++) {
+                console.log(fiveDays[i].dt);
+                var forecastDate = moment(fiveDays[i].dt, 'X').format('l');
+                var forecastIcon = 'http://openweathermap.org/img/wn/' + fiveDays[i].weather[0].icon + '.png';
+                console.log(forecastIcon);
+                
+                // create elements (dat p, icon, 3 p)
+                var forecastDateP = document.createElement('p');
+                var forecastImg = document.createElement('img');
+                var forecastTempP = document.createElement('p');
+                var forecastWindP = document.createElement('p');
+                var forecastHumidityP = document.createElement('p');
+
+                // modify elements
+                forecastDateP.textContent = forecastDate;
+                forecastImg.setAttribute('src', forecastIcon);
+                forecastImg.setAttribute('alt', fiveDays[i].weather[0].description);
+                
+                
+                // append elements
+                days[i].appendChild(forecastDateP);
+                days[i].appendChild(forecastImg);
+
+            }
+            // moment(date)
+            // get icon
+            // get temp, wind, and humidity
+        })
 
 }
 
