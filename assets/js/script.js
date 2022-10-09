@@ -151,7 +151,8 @@ function submitForm(event) {
         }
     }
 
-    var value = cityInput.value
+    var value = cityInput.value;
+    value = value.toLowerCase();
     var valueWords = value.split(" ");
 
     for (var i = 0; i < valueWords.length; i++) {
@@ -192,8 +193,6 @@ ul.addEventListener('click', function(event) {
     }
 })
 
-// click listener for search history cities
-    // use text content in <button> to create var that will be used to fetch the data above
 
 getSearchHistory()
 renderHistory()
