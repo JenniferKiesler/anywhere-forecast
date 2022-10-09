@@ -69,7 +69,7 @@ function getCurrentWeather(city) {
             img.setAttribute('src', icon);
             img.setAttribute('alt', cityName.weather[0].description)
             h2.textContent = city + ' (' + today + ') ';
-            tempP.textContent = 'Temp: ' + temp + '°F';
+            tempP.textContent = 'Temp: ' + temp + ' °F';
             windP.textContent = 'Wind: ' + wind + ' mph';
             humidityP.textContent = 'Humidity: ' + humidity + ' %';
             humidityP.setAttribute('style', 'padding-bottom: 10px')
@@ -106,8 +106,11 @@ function getForecast(city) {
                 var forecastDate = moment(fiveDays[i].dt, 'X').format('l');
                 var forecastIcon = 'http://openweathermap.org/img/wn/' + fiveDays[i].weather[0].icon + '.png';
                 console.log(forecastIcon);
+                var forecastTemp = fiveDays[i].main.temp
+                var forecastWind = fiveDays[i].wind.speed;
+                var forecastHumidity = fiveDays[i].main.humidity;
                 
-                // create elements (dat p, icon, 3 p)
+                // create elements (date p, icon, 3 p)
                 var forecastDateP = document.createElement('p');
                 var forecastImg = document.createElement('img');
                 var forecastTempP = document.createElement('p');
@@ -118,16 +121,19 @@ function getForecast(city) {
                 forecastDateP.textContent = forecastDate;
                 forecastImg.setAttribute('src', forecastIcon);
                 forecastImg.setAttribute('alt', fiveDays[i].weather[0].description);
-                
+                forecastTempP.textContent = 'Temp: ' + forecastTemp + ' °F';
+                forecastWindP.textContent = 'Wind: ' + forecastWind + ' mph';
+                forecastHumidityP.textContent = 'Humidity: ' + forecastHumidity + ' %';
+
                 
                 // append elements
                 days[i].appendChild(forecastDateP);
                 days[i].appendChild(forecastImg);
+                days[i].appendChild(forecastTempP);
+                days[i].appendChild(forecastWindP);
+                days[i].appendChild(forecastHumidityP);
 
             }
-            // moment(date)
-            // get icon
-            // get temp, wind, and humidity
         })
 
 }
