@@ -11,9 +11,10 @@ var cities = []
 
 // save city name to local storage
 function saveSearch() {
-    // find way to not allow repeat words in cities[]
-    cities.push(city)
-    localStorage.setItem('cities', JSON.stringify(cities))
+    if (!cities.includes(city)) {
+        cities.push(city)
+        localStorage.setItem('cities', JSON.stringify(cities))
+    }
     console.log(cities)
 }
 
@@ -105,7 +106,15 @@ function submitForm(event) {
         currentInfo.removeChild(currentInfo.firstChild);
     }
 
-    city = cityInput.value;
+    var value = cityInput.value
+    var valueWords = value.split(" ");
+
+    for (var i = 0; i < valueWords.length; i++) {
+        valueWords[i] = valueWords[i][0].toUpperCase() + valueWords[i].substr(1);
+    }
+
+    city = valueWords.join(" ");
+
     getCurrentWeather(city);
     getForecast(city);
     cityInput.value = "";
