@@ -46,7 +46,7 @@ function renderHistory() {
 
 // function to fetch data for current weather
 function getCurrentWeather(city) {
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey)
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey)
         .then(function(response) {
             return response.json()
         })
@@ -90,7 +90,7 @@ function getCurrentWeather(city) {
 
 // function to fetch data for 5 day forecast
 function getForecast(city) {
-    fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey)
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey)
         .then(function(response) {
             return response.json()
         })
