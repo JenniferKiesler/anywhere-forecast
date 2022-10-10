@@ -38,6 +38,8 @@ function renderHistory() {
 
         var li = document.createElement('li');
         li.classList.add('list-group-item');
+        li.classList.add('col-4');
+        li.classList.add('col-md-12');
         li.textContent = searchedCity;
 
         ul.appendChild(li);

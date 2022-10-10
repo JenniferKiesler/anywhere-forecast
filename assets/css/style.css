@@ -11,6 +11,10 @@ h1 {
     margin-left: -5px;
 }
 
+form {
+    text-align: center;
+}
+
 h2 {
     font-weight: bold;
     font-size: 25px;
@@ -27,12 +31,17 @@ h2 {
     font-weight: bold;
 }
 
+.list-group {
+    align-items: center;
+}
+
 .list-group-item {
     background: rgb(192, 191, 191);
     text-align: center;
     margin-bottom: 10px;
     border-radius: 5px;
-   overflow-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 8px 5px;
 }
 
 .list-group-item:hover {
@@ -64,6 +73,7 @@ h3 {
     color: white;
     margin-left: 7px;
     line-height: 2.5;
+    padding: 0px 5px;
 }
 
 .day img {
@@ -75,46 +85,16 @@ h3 {
     .day p {
         font-size: small;
     }
-    .day {
-        padding: 0px 5px;
-    }
-    .list-group-item {
-        padding: 8px 5px;
-    }
-    form h2 {
-        font-size: 22px;
-    }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 645px) {
     .day p {
         font-size: x-small;
     }
-    .list-group-item {
-        font-size: small;
-    }
-    form h2 {
-        text-align: center;
-    }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 520px) {
     .day p {
         font-size: xx-small;
-    }
-    .list-group-item {
-        font-size: x-small;
-    }
-}
-
-@media (max-width: 530px) {
-    .list-group-item {
-        font-size: xx-small;
-    }
-    form h2 {
-        font-size: 18px;
-    }
-    .btn {
-        font-size: x-small;
     }
 }
