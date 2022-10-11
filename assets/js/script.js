@@ -55,7 +55,7 @@ function getCurrentWeather(city) {
         .then(function(cityName) {
             console.log(cityName);
             var today = moment().format('l');
-            var icon = 'http://openweathermap.org/img/wn/' + cityName.weather[0].icon + '.png';
+            var icon = 'https://openweathermap.org/img/wn/' + cityName.weather[0].icon + '.png';
             var temp = cityName.main.temp
             var wind = cityName.wind.speed
             var humidity = cityName.main.humidity
@@ -105,7 +105,7 @@ function getForecast(city) {
 
             for (var i = 0; i < fiveDays.length; i++) {
                 var forecastDate = moment(fiveDays[i].dt, 'X').format('l');
-                var forecastIcon = 'http://openweathermap.org/img/wn/' + fiveDays[i].weather[0].icon + '.png';
+                var forecastIcon = 'https://openweathermap.org/img/wn/' + fiveDays[i].weather[0].icon + '.png';
                 var forecastTemp = fiveDays[i].main.temp
                 var forecastWind = fiveDays[i].wind.speed;
                 var forecastHumidity = fiveDays[i].main.humidity;
